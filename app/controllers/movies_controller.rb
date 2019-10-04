@@ -17,10 +17,20 @@ class MoviesController < ApplicationController
 
     if params[:ratings].present?
       @selected_ratings = params[:ratings].keys
+      session[:ratings] = params[:ratings]
+    end
+
+    if session[:ratings].present?
+      @selected_ratings = session[:ratings].keys
     end
 
     if params[:sort].present?
       @sort = params[:sort]
+      session[:sort] = params[:sort]
+    end
+
+    if session[:sort].present?
+      @sort = session[:sort]
     end
 
     @movies = Movie.where(rating: @selected_ratings).order(@sort)
