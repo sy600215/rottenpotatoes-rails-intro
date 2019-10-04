@@ -11,17 +11,15 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @selected = ['G','PG','PG-13','R']
     @all_ratings = ['G','PG','PG-13','R']
-
-    @selected_ratings = ['G','PG','PG-13','R']
-
     if params[:ratings].present?
-      @selected_ratings = params[:ratings].keys
+      @selected = params[:ratings].keys
       session[:ratings] = params[:ratings]
     end
 
     if session[:ratings].present?
-      @selected_ratings = session[:ratings].keys
+      @selected = session[:ratings].keys
     end
 
     if params[:sort].present?
@@ -33,7 +31,7 @@ class MoviesController < ApplicationController
       @sort = session[:sort]
     end
 
-    @movies = Movie.where(rating: @selected_ratings).order(@sort)
+    @movies = Movie.where(rating: @selected).order(@sort)
 
   end
 
