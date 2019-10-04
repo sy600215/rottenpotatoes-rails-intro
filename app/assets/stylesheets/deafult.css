@@ -1,3 +1,6 @@
 table#movies th.hilite {
   background-color: yellow;
 }
+table#movies h1.title {
+  background-color: orange;
+}

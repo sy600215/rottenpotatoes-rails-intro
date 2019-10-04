@@ -11,8 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @selected = ['G','PG','PG-13','R']
-    @all_ratings = ['G','PG','PG-13','R']
+    @selected = ['G','PG','PG-13','R','NC-17']
+    @all_ratings = ['G','PG','PG-13','R','NC-17']
     if params[:ratings].present?
       @selected = params[:ratings].keys
       session[:ratings] = params[:ratings]
